@@ -2,13 +2,16 @@
   "manifest_version": 3,
   "name": "Nudge Me",
   "version": "1.0.0",
+  "permissions": ["storage", "alarms"],
   "description": "Tool to remind you to open the added study website lists for atleast one time a day",
   "action": {
     "default_popup": "popup.html"
   },
+  "background": {
+    "service_worker": "background.js"
+  },
   "icons": {
     "32": "images/dart32.png",
     "128": "images/dart32.png"
-  },
-  "permissions": ["storage"]
+  }
 }
