@@ -4,7 +4,6 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
   }
   console.log('Creating alarm')
 
-  // Create an alarm so we have something to look at in the demo
   await chrome.alarms.create('nudge-me-alarm', {
     delayInMinutes: 0.1,
     periodInMinutes: 0.1
@@ -15,5 +14,12 @@ chrome.runtime.onInstalled.addListener(async ({ reason }) => {
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === "nudge-me-alarm") {
     console.log("Alarm triggered every minute");
+    chrome.storage.local.get(["studySites"], function (result) {
+        const studySites = result.studySites || [];
+
+        studySites.forEach((site) => {
+            console.log(site.name, ' -> ', site.visitedToday)
+        })
+    })
   }
 });

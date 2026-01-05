@@ -7,10 +7,10 @@ document.getElementById("addBtn").addEventListener("click", function () {
     chrome.storage.local.get(["studySites"], function (result) {
         const studySites = result.studySites || [];
 
-        if (studySites.includes(value)) {
+        if (studySites.some((item) => item.name == value)) {
             alert("Already exists!");
         } else {
-            studySites.push(value);
+            studySites.push({ name: value, visitedToday: false });
             chrome.storage.local.set({ studySites }, function () {
                 alert("Saved successfully!");
             });
