@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", () => {
+  chrome.storage.local.get(["streak"], (result) => {
+    const span = document.getElementById("streakValue");
+    span.textContent = result.streak ?? "No value found";
+  });
+});
+
+
 document.getElementById("addBtn").addEventListener("click", function () {
     const value = document.getElementById("urlInput").value.trim();
 
@@ -14,6 +22,11 @@ document.getElementById("addBtn").addEventListener("click", function () {
             chrome.storage.local.set({ studySites }, function () {
                 alert("Saved successfully!");
             });
+            const streak = studySites.length || 0
+            chrome.storage.local.set({ streak }, () => {
+                const span = document.getElementById("streakValue");
+                span.textContent = streak ?? "No value found";
+            })
         }
     });
 })

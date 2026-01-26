@@ -3,6 +3,7 @@
   "name": "Nudge Me",
   "version": "1.0.0",
   "permissions": ["storage", "alarms"],
+  "host_permissions": ["<all_urls>"],
   "description": "Tool to remind you to open the added study website lists for atleast one time a day",
   "action": {
     "default_popup": "popup.html"
