@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.local.get(["streak"], (result) => {
     const span = document.getElementById("streakValue");
-    span.textContent = result.streak ?? "No value found";
+    span.textContent = result.streak ?? "0";
   });
 });
 
